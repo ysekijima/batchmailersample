@@ -1,0 +1,7 @@
+<p>バッチ<%= "#{ @batch_name }を実行し、正常に終了しました。" %> </p>
+<% if @response_texts.present? %>
+<p>詳細情報は以下の通りです。</p>
+<% @response_texts.each do |text| %>
+<p><%= text %></p>
+<% end %>
+<% end %>
