@@ -1,4 +1,11 @@
 class PostsController < ApplicationController
+  before_action :redirect_to_admin_root
+
+  def redirect_to_admin_root
+    redirect_to rails_admin_path and return
+  end
+
+
   before_action :set_post, only: %i[ show edit update destroy ]
 
   # GET /posts or /posts.json
