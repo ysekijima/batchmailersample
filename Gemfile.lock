@@ -277,7 +277,7 @@ DEPENDENCIES
   pg (>= 0.18, < 2.0)
   pry-byebug
   puma (~> 4.1)
-  rails (~> 6.0.3)
+  rails (~> 6.0.6)
   rails_admin (~> 3.0)
   sass-rails (>= 6)
   selenium-webdriver

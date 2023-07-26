@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'home/index'
   post 'home/post1'
   post 'home/post2'
+  post 'home/post3'
   root 'home#index'
 
   resources :posts

@@ -1,6 +1,6 @@
 h1
   | Home#index
-table.table.table-light.table-striped
+table.table.table-light.table-striped.table-hover
   thead
     tr
       th scope="col" ID
@@ -9,6 +9,7 @@ table.table.table-light.table-striped
       th scope="col" 色
       th scope="col" メモ
       th scope="col" にぼし数
+  tbody
     - @cats.each do | cat |
       tr
         th scope="row" = cat.id
@@ -18,6 +19,77 @@ table.table.table-light.table-striped
         td = cat.memo
         td = cat.fee
 .p-2
-  = button_to 'post1', {action: 'post1'}, {method: :post }
+  .row
+    .col-1
+      = button_to 'post1', {action: 'post1'}, {method: :post }
+    .col
+      | 3歳未満 かつ にぼし15個未満の場合　→にぼし15個に更新
 .p-2
-  = button_to 'post2', {action: 'post2'}, {method: :post }
+  .row
+    .col-1
+      = button_to 'post2', {action: 'post2'}, {method: :post }
+    .col
+      | 全猫をにぼし10個に更新（リセット）
+
+
+hr
+
+.p-2
+
+
+.accordion
+  .accordion-item
+    h2.accordion-header id="headingOne"
+      button.accordion-button.collapsed type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne"
+        | 実装ソース
+    .accordion-collapse.collapse id="collapseOne" aria-labelledby="headingOne"
+      pre.m-4
+        code
+          |  # HomeController#post1
+          br
+          |  def post1
+          br
+          |    # 3歳未満 かつ にぼし15個未満の場合は煮干し15個に更新
+          br
+          |    target_cats = Cat.where('age < ?', 3).where('fee < ?', 15)
+          br
+          |    target_cats.update_all(fee: 15)
+          br
+          ='   flash[:notice] = "#{target_cats.map(&:name).join(\',\')}を更新しました"'
+          br
+          |    return redirect_to home_index_path
+          br
+          |
+          |  end
+  .accordion-item
+    h2.accordion-header id="heading2"
+      button.accordion-button.collapsed type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2"
+        | 修正ソース
+    .accordion-collapse.collapse id="collapse2" aria-labelledby="heading2"
+      pre.m-4
+        code
+          |  # HomeController#post1
+          br
+          |  def post1
+          br
+          |    # 3歳未満 かつ にぼし15個未満の場合は煮干し15個に更新
+          br
+          |    target_cats = Cat.where('age < ?', 3).where('fee < ?', 15)
+          br
+          |    target_cats.reload
+          br
+          |    target_cats.update_all(fee: 15)
+          br
+          ='   flash[:notice] = "#{target_cats.map(&:name).join(\',\')}を更新しました"'
+          br
+          |    return redirect_to home_index_path
+          br
+          |
+          |  end
+      .p-2
+        .row
+          .col-1
+            = button_to 'post3', {action: 'post3'}, {method: :post }
+          .col
+            | 3歳未満 かつ にぼし15個未満の場合　→にぼし15個に更新
+
