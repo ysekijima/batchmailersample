@@ -1,6 +1,23 @@
 h1
   | Home#index
-p
-  | Find me in app/views/home/index.html.erb
-.border.p-3.m-2
-  | hogehoge
+table.table.table-light.table-striped
+  thead
+    tr
+      th scope="col" ID
+      th scope="col" 名前
+      th scope="col" 年齢
+      th scope="col" 色
+      th scope="col" メモ
+      th scope="col" にぼし数
+    - @cats.each do | cat |
+      tr
+        th scope="row" = cat.id
+        td = cat.name
+        td = cat.age
+        td = cat.color
+        td = cat.memo
+        td = cat.fee
+.p-2
+  = button_to 'post1', {action: 'post1'}, {method: :post }
+.p-2
+  = button_to 'post2', {action: 'post2'}, {method: :post }

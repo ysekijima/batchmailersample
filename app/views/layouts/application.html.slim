@@ -9,4 +9,13 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    .container.m-auto
+      - flash.each do |name, msg|
+        .d-flex.justify-content-center
+          div class="alert alert-dismissible fade show __flash-message text-center mess-noti alert-#{name.to_s == 'notice' ? 'success' : 'danger'} mx-2 mt-3"
+            = msg
+
+
+
+    .container.m-auto
+      = yield
