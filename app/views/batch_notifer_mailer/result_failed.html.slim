@@ -1,0 +1,9 @@
+p
+  | バッチ
+  = "#{ @batch_name }を実行しましたが、エラーが発生しました。"
+- if @response_texts.present?
+  p
+    | 詳細情報は以下の通りです。
+  - @response_texts.each do |text|
+    p
+      = text

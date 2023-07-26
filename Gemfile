@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails_admin', '~> 3.0'
 gem "net-http"
+gem 'slim-rails' #　railsでslimを利用するためのgem
+gem 'html2slim' #　html.erbをhtmle.slimに変換するためのgem
