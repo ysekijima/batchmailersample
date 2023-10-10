@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'sandbox/index'
+  post 'sandbox/post1'
+  post 'sandbox/post2'
   get 'home/index'
   post 'home/post1'
   post 'home/post2'
