@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_12_052807) do
+ActiveRecord::Schema.define(version: 2024_03_07_005721) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 2023_05_12_052807) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "shop_id"
+    t.integer "age"
+    t.string "tail_type", comment: "尻尾タイプ"
     t.index ["shop_id"], name: "index_cats_on_shop_id"
   end
 
