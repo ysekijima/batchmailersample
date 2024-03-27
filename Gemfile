@@ -58,3 +58,4 @@ gem 'rails_admin', '~> 3.0'
 gem "net-http"
 gem 'slim-rails' #　railsでslimを利用するためのgem
 gem 'html2slim' #　html.erbをhtmle.slimに変換するためのgem
+gem 'rubyXL', '~> 3.4', '>= 3.4.25' # xlsxを扱うためのgem
