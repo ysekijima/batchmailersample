@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
+  include ExcelTemplateHelper
   def index
     @cats = Cat.all.order(:id)
   end
@@ -30,4 +31,21 @@ class HomeController < ApplicationController
     return redirect_to home_index_path
   end
 
+  def download
+    create_data
+    send_data(
+      excel_render('lib/excel_templates/sample1.xlsx').stream.string,
+      type: 'application/vnd.ms-excel',
+      filename: "#{@datetime.strftime("%Y%m%d_%H%M%S")}_sample1（#{@staff.name}）.xlsx"
+    )
+  end
+
+  private
+
+  def create_data
+    @datetime = Time.current
+    @staff = Staff.find(5)
+    @cats = Cat.all
+    @title = '猫一覧'
+  end
 end
