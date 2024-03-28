@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'home/post2'
   post 'home/post3'
   root 'home#index'
+  get 'home/download'
+  get 'home/download2'
 
   resources :posts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
